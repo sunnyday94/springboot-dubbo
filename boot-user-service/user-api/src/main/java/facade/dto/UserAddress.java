@@ -7,6 +7,13 @@ package facade.dto;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
  * 〈一句话功能简述〉<br> 
  * 〈用户地址类〉
@@ -15,6 +22,12 @@ import java.io.Serializable;
  * @create 2020/1/30
  * @since 1.0.0
  */
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
 public class UserAddress implements Serializable {
     private static final long serialVersionUID = -1342645860196462363L;
 
@@ -25,75 +38,4 @@ public class UserAddress implements Serializable {
     private String phoneNum;   //电话号码
     private String isDefault;  //是否为默认(Y:是;N:否)
 
-    public UserAddress() {
-    }
-
-    public UserAddress(Integer id, String userAddress, Integer userId, String consignee, String phoneNum, String isDefault) {
-        this.id = id;
-        this.userAddress = userAddress;
-        this.userId = userId;
-        this.consignee = consignee;
-        this.phoneNum = phoneNum;
-        this.isDefault = isDefault;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUserAddress() {
-        return userAddress;
-    }
-
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getConsignee() {
-        return consignee;
-    }
-
-    public void setConsignee(String consignee) {
-        this.consignee = consignee;
-    }
-
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
-    public String getIsDefault() {
-        return isDefault;
-    }
-
-    public void setIsDefault(String isDefault) {
-        this.isDefault = isDefault;
-    }
-
-    @Override
-    public String toString() {
-        return "UserAddress{" +
-                "id=" + id +
-                ", userAddress='" + userAddress + '\'' +
-                ", userId=" + userId +
-                ", consignee='" + consignee + '\'' +
-                ", phoneNum='" + phoneNum + '\'' +
-                ", isDefault='" + isDefault + '\'' +
-                '}';
-    }
 }

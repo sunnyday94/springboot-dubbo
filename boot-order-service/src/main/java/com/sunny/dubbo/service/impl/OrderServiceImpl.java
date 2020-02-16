@@ -57,6 +57,11 @@ public class OrderServiceImpl implements OrderService {
      **/
     public List<UserAddress> fallBackError(Integer userId){
         System.out.println("出错的用户id为:"+userId);
-        return Collections.singletonList(new UserAddress(55, "错误地址", 55, "错误联系人", "错误手机号", "否"));
+        return Collections.singletonList(
+                UserAddress.builder().id(55).userId(55)
+                        .consignee("错误联系人").phoneNum("错误手机号")
+                        .isDefault("否").userAddress("错误收货地址").build()
+        );
+
     }
 }
