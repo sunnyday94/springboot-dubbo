@@ -25,6 +25,15 @@
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>0.2.0</version>
         </dependency>
+
+        <!-- 熔断器 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <version>2.1.5.RELEASE</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>

@@ -7,10 +7,13 @@
 package com.sunny.dubbo.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.sunny.dubbo.service.OrderService;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import facade.UserService;
@@ -34,12 +37,26 @@ public class OrderServiceImpl implements OrderService {
     private UserService userService;
 
     @Override
+    @HystrixCommand(fallbackMethod = "fallBackError")
     public List<UserAddress> initOrder(Integer userId) {
-        System.out.println(String.format("用户id为:%d", userId));
-        //1.查询用户的收货地址
+        System.out.println(String.format("传入的用户id为:%d", userId));
+
         List<UserAddress> userAddressList = userService.getUserAddressListByUserId(userId);
         //循环打印地址
         userAddressList.forEach(System.out::println);
         return userAddressList;
+    }
+    
+    
+    /* *
+     * @Author sunny
+     * @Description  服务容错方法
+     * @Date 0:31 2020/2/17
+     * @Param []
+     * @return java.util.List<facade.dto.UserAddress>
+     **/
+    public List<UserAddress> fallBackError(Integer userId){
+        System.out.println("出错的用户id为:"+userId);
+        return Collections.singletonList(new UserAddress(55, "错误地址", 55, "错误联系人", "错误手机号", "否"));
     }
 }

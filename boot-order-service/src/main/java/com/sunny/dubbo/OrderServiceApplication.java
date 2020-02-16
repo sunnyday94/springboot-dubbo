@@ -12,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -22,7 +23,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * @since 1.0.0
  */
 @SpringBootApplication(scanBasePackages = {"com.sunny.dubbo"})
-@EnableDubbo
+@EnableDubbo(scanBasePackages = {"com.sunny.dubbo"})
+@EnableHystrix  //开启熔断器
 public class OrderServiceApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

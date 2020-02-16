@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserAddress> getUserAddressListByUserId(Integer userId) {
+        double randomNum = Math.random();
+        if(randomNum<=0.5){
+            throw new RuntimeException("随机数为:"+randomNum+",调用出现异常!");
+        }
+
         UserAddress address1 = new UserAddress(1, "湖北省随州市,", 1, "sunny", "15272877320", "N");
 
         UserAddress address2 = new UserAddress(2, "上海市浦东新区", 2,"王晴天", "15021668353","Y");
